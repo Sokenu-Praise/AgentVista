@@ -61,28 +61,6 @@ Each task is grounded in detail-rich visual states (daily photos, screenshots, t
 - **Easy to verify and stable over time** -- concise target answers in deterministic formats (number, entity name, short description).
 - **Expert-curated with rigorous quality control** -- each instance undergoes agent-centric filtering, expert finalization, execution filtering, and two-round verification.
 
----
-
-## Why AgentVista?
-
-Existing agentic multimodal benchmarks typically have two main limitations:
-
-1. **Capability-specific evaluation** -- they focus on a single skill (visual manipulation, web browsing, or code generation), making it hard to assess agents that must combine multiple skills in long-horizon workflows.
-2. **Trade-off between realism and difficulty** -- many benchmarks increase difficulty by simplifying visual states or using artificial tool patterns that deviate from everyday workflows.
-
-AgentVista addresses both gaps:
-
-| Benchmark | Vis. Ops | Vis. Search | Text Search | Code Exec. | Multi-Image | Avg Turns |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| TIR-Bench | Y | - | - | Y | Y | 2.9 |
-| Agent-X | Y | - | Y | Y | Y | 3.4 |
-| MM-BrowseComp | - | Y | Y | Y | - | 8.2 |
-| MMSearch-Plus | - | Y | Y | - | Y | 4.6 |
-| BrowseComp-VL | - | Y | Y | Y | - | 4.3 |
-| VisualToolBench | Y | - | Y | Y | - | 4.5 |
-| **AgentVista (Ours)** | **Y** | **Y** | **Y** | **Y** | **Y** | **12.7** |
-
-AgentVista is the **only benchmark that covers all four tool categories** (visual operations, visual search, text search, and code execution), supports **multi-image inputs**, and requires substantially **longer interaction horizons** (12.7 turns on average).
 
 ---
 
@@ -150,13 +128,9 @@ Performance on AgentVista (accuracy %). Domain abbreviations: **Comm.** (Commerc
 The AgentVista benchmark dataset is hosted on Hugging Face. Download it before running evaluation:
 
 ```bash
-# Option 1: Using huggingface-cli
 pip install huggingface_hub
 huggingface-cli download Warrieryes/AgentVista --repo-type dataset --local-dir ./datasets
 
-# Option 2: Using Python
-from huggingface_hub import snapshot_download
-snapshot_download(repo_id="Warrieryes/AgentVista", repo_type="dataset", local_dir="./datasets")
 ```
 
 The dataset includes task queries (JSON) and associated images. After downloading, your directory structure should look like:
@@ -214,10 +188,6 @@ export VERIFIER_MODEL_NAME="openai/gpt-4.1"
 export VERIFIER_API_KEY="your-verifier-api-key"
 export VERIFIER_END_POINT="https://openrouter.ai/api/v1/chat/completions"
 
-# Optional: Fallback API for round-robin on rate limits
-export REASONING_API_KEY_2="your-fallback-api-key"
-export REASONING_END_POINT_2="https://your-fallback-endpoint/v1/chat/completions"
-
 # Optional: Control which tools are enabled (default: all)
 export ENABLED_TOOLS="web_search,image_search,visit,code_interpreter"
 ```
@@ -261,23 +231,6 @@ python infer.py \
 
 - **Images**: A single folder containing all referenced images.
 
-### Command-Line Arguments
-
-| Argument | Default | Description |
-|---|---|---|
-| `--input-file` | *(required)* | Path to input JSON/JSONL file |
-| `--image-folder` | *(required)* | Folder containing referenced images |
-| `--output-dir` | *(required)* | Directory for output results |
-| `--max-turns` | 16 | Maximum reasoning/tool turns per sample |
-| `--max-images` | 16 | Maximum images per sample |
-| `--max-total-tokens` | 65536 | Context token limit |
-| `--temperature` | 0.0 | Sampling temperature |
-| `--top-p` | 1.0 | Top-p sampling parameter |
-| `--max-completion-tokens` | 8192 | Maximum tokens per completion |
-| `--skip-completed` | False | Skip samples with existing trajectories |
-| `--tool-config-path` | `configs/tool_configs.yaml` | Path to tool configuration YAML |
-| `--inference-prompts-path` | `prompts/inference_prompts.yaml` | Path to inference prompts YAML |
-| `--system-prompt-key` | `multi_tool_agent_search` | Key for system prompt in the prompts YAML |
 
 ### Output Structure
 
@@ -344,14 +297,3 @@ If you find AgentVista useful, please cite our paper:
 }
 ```
 
----
-
-## Acknowledgments
-
-We thank the developers of [Trafilatura](https://github.com/adbar/trafilatura), [Serper.dev](https://serper.dev), and [Jina AI](https://jina.ai) for providing the foundational tools used in our evaluation framework.
-
----
-
-## License
-
-This project is released for research purposes. Please refer to the LICENSE file for details.
